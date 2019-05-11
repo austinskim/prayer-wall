@@ -1,0 +1,52 @@
+{
+	"basePath": "/",
+	"consumes": [
+		"application/json"
+	],
+	"definitions": {
+		"HealthCheckResponse": {
+			"properties": {
+				"data": {
+					"type": "string"
+				},
+				"message": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"data",
+				"message"
+			],
+			"type": "object"
+		}
+	},
+	"info": {
+		"title": "",
+		"version": "0.1.0"
+	},
+	"paths": {
+		"/healthcheck": {
+			"get": {
+				"operationId": "GetHealthStatus",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/HealthCheckResponse"
+						}
+					}
+				},
+				"security": [],
+				"parameters": []
+			}
+		}
+	},
+	"produces": [
+		"application/json"
+	],
+	"swagger": "2.0",
+	"securityDefinitions": {}
+}

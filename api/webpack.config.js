@@ -9,7 +9,7 @@ fs.readdirSync('node_modules')
   });
 
 module.exports = {
-  entry: './server/server.ts',
+  entry: './src/server/index.ts',
   mode: 'development',
   output: {
     path: __dirname + '/dist',
