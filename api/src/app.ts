@@ -1,6 +1,7 @@
 import dotenv from 'dotenv';
 import express from 'express';
 import init from './server';
+import 'reflect-metadata';
 
 if (process.env.NODE_ENV === 'development') {
   dotenv.config();
