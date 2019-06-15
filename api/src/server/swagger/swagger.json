@@ -18,6 +18,21 @@
 				"message"
 			],
 			"type": "object"
+		},
+		"PrayerRequestResponse": {
+			"properties": {
+				"title": {
+					"type": "string"
+				},
+				"content": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"title",
+				"content"
+			],
+			"type": "object"
 		}
 	},
 	"info": {
@@ -36,6 +51,24 @@
 						"description": "Ok",
 						"schema": {
 							"$ref": "#/definitions/HealthCheckResponse"
+						}
+					}
+				},
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/prayer-request": {
+			"get": {
+				"operationId": "GetAll",
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"schema": {
+							"$ref": "#/definitions/PrayerRequestResponse"
 						}
 					}
 				},

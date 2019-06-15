@@ -1,9 +1,6 @@
 import { Get, Controller, Route } from 'tsoa';
 
-interface HealthCheckResponse {
-  data: string;
-  message: string;
-}
+import HealthCheckResponse from '../models/response/healthcheck';
 
 @Route('healthcheck')
 export class HealthCheckController extends Controller {

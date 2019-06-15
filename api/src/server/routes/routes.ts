@@ -1,6 +1,7 @@
 /* tslint:disable */
 import { Controller, ValidationService, FieldErrors, ValidateError, TsoaRoute } from 'tsoa';
 import { HealthCheckController } from './../controllers/healthcheck.controller';
+import { PrayerRequestController } from './../controllers/prayer-request.controller';
 import * as express from 'express';
 
 const models: TsoaRoute.Models = {
@@ -8,6 +9,12 @@ const models: TsoaRoute.Models = {
         "properties": {
             "data": { "dataType": "string", "required": true },
             "message": { "dataType": "string", "required": true },
+        },
+    },
+    "PrayerRequestResponse": {
+        "properties": {
+            "title": { "dataType": "string", "required": true },
+            "content": { "dataType": "string", "required": true },
         },
     },
 };
@@ -30,6 +37,24 @@ export function RegisterRoutes(app: express.Express) {
 
 
             const promise = controller.getHealthStatus.apply(controller, validatedArgs as any);
+            promiseHandler(controller, promise, response, next);
+        });
+    app.get('/prayer-request',
+        function(request: any, response: any, next: any) {
+            const args = {
+            };
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request);
+            } catch (err) {
+                return next(err);
+            }
+
+            const controller = new PrayerRequestController();
+
+
+            const promise = controller.getAll.apply(controller, validatedArgs as any);
             promiseHandler(controller, promise, response, next);
         });
 
